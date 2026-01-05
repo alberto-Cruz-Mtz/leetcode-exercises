@@ -34,8 +34,22 @@ public class TwoSum {
         int[] expected1 = {0, 1};
         int[] expected2 = {1, 2};
 
-        assert Arrays.equals(result1, expected1);
-        assert Arrays.equals(result2, expected2);
-        assert Arrays.equals(result3, expected1);
+        if (Arrays.equals(result1, expected1)) {
+            System.out.println("Test 1 passed");
+        } else {
+            System.out.println("Test 1 FAILED: expected " + Arrays.toString(expected1) + " but got " + Arrays.toString(result1));
+        }
+
+        if (Arrays.equals(result2, expected2)) {
+            System.out.println("Test 2 passed");
+        } else {
+            System.out.println("Test 2 FAILED: expected " + Arrays.toString(expected2) + " but got " + Arrays.toString(result2));
+        }
+
+        if (Arrays.equals(result3, expected1)) {
+            System.out.println("Test 3 passed");
+        } else {
+            System.out.println("Test 3 FAILED: expected " + Arrays.toString(expected2) + " but got " + Arrays.toString(result3));
+        }
     }
 }
