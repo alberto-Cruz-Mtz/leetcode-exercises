@@ -7,13 +7,21 @@ public class IsPalindrome {
     // Given an integer x, return true if x is a palindrome, and false otherwise.
 
     /**
-     * Esta solución utiliza la clase StringBuilder aprovechando su metodo
-     * reverse(), siendo esta la forma de resolver este problema de la manera más fácil
+     * Refactoriza la solución anterior agregando como restricción no usar métodos nativos
+     * para invertir la cadena, esta forma de resolver el problema implica convertir el parámetro
+     * en una cadena y de ahi obtenerlo como un arreglo de caracteres y recorrerlo desde el final al inicio
+     * pero aumenta el tiempo de runtime de 8ms con StringBuilder a 10ms con la forma actual
      */
     public static boolean isPalindrome(int x) {
-        String word = String.valueOf(x);
-        StringBuilder build = new StringBuilder(word);
-        return build.reverse().toString().equals(word);
+        String originally = String.valueOf(x);
+        String reverse = "";
+        char[] characters = originally.toCharArray();
+
+        for (int i = originally.length() - 1; i >= 0; i--) {
+            reverse += characters[i];
+        }
+
+        return reverse.equals(originally);
     }
 
     public static void main(String[] args) {
