@@ -1,22 +1,32 @@
 package leet.code;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TwoSum {
+
+    /**
+     * Elimina el for anidado reduciendo la complejidad a O(n)
+     * Agrega un map donde se guarda como key el resultado de la resta entre el target
+     * y como value el valor del índice
+     * Se optimiza la búsqueda al buscar el valor del índice siguiente en la key y no recorriendo
+     * el arreglo varias veces por índice
+     */
     public static int[] twoSum(int[] nums, int target) {
-        int a, b;
+        Map<Integer, Integer> combined = new HashMap<>();
         int[] result = new int[2];
+        int n;
 
         for (int i = 0; i < nums.length; i++) {
-            a = nums[i];
-            for (int j = i + 1; j < nums.length; j++) {
-                b = nums[j];
-                if ((a + b) == target) {
-                    result[0] = i;
-                    result[1] = j;
-                    return result;
-                }
+            if (combined.containsKey(nums[i])) {
+                result[0] = combined.get(nums[i]);
+                result[1] = i;
+                return result;
             }
+
+            n = target - nums[i];
+            combined.put(n, i);
         }
 
         return result;
